@@ -6,6 +6,7 @@ pipeline {
     }
     stages {
         stage('Compile et tests') {
+           agent any
             steps {
                 echo 'Unit test et packaging'
                 sh './mvnw -Dmaven.test.failure.ignore=true -Pprod clean package'
