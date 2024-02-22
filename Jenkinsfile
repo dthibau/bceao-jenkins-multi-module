@@ -46,7 +46,7 @@ pipeline {
                      steps {
                         echo 'Analyse sonar'
                         withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]) {
-                          sh './mvnw -Dsonar.login=admin -Dsonar.password=admin123 integration-test sonar:sonar'
+                          sh './mvnw -Dsonar.token=${SONAR_TOKEN} integration-test sonar:sonar'
                           script {
                             checkSonarQualityGate()
                           }
